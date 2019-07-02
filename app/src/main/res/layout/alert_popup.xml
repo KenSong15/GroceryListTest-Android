@@ -30,13 +30,15 @@
                 android:layout_below="@id/title"
                 android:hint="@string/hint_item"
                 android:layout_marginTop="20dp"/>
+
             <EditText
+                android:id="@+id/groceryQty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/groceryQty"
                 android:layout_below="@id/groceryItem"
                 android:layout_marginTop="15dp"
-                android:hint="@string/quantity_hint"/>
+                android:hint="@string/quantity_hint"
+                android:inputType="numberDecimal" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
