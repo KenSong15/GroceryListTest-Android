@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Log.d("save to DB","to be implement123");
                 //TODO: save to databese
                 //todo: go to next screen
 
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveGroceryToDB(View view) {
+        //Log.d("save to DB","to be implement");
     }
 
 
