@@ -10,4 +10,5 @@
     <string name="exampleGrocery">ExampleGrocery</string>
     <string name="exampleQuantity">ExampleQuantity</string>
     <string name="exampleDate">Date: (example)</string>
+    <string name="exampleDetail">Example Detail</string>
 </resources>

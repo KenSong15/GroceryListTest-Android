@@ -18,7 +18,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/name"
+                android:id="@+id/nameRow"
                 android:text="@string/exampleGrocery"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -26,8 +26,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/quantity"
-                android:layout_below="@+id/name"
+                android:id="@+id/quantityRow"
+                android:layout_below="@+id/nameRow"
                 android:paddingTop="5dp"
                 android:textStyle="italic"
                 android:text="@string/exampleQuantity"/>
@@ -35,11 +35,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/dateAdded"
+                android:id="@+id/dateAddedRow"
                 android:text="@string/exampleDate"
                 android:textStyle="italic"
                 android:paddingTop="5dp"
-                android:layout_below="@+id/quantity"/>
+                android:layout_below="@+id/quantityRow"/>
 
             <TableRow
                 android:layout_alignParentRight="true"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="15dp"
-                android:layout_alignBottom="@+id/dateAdded">
+                android:layout_alignBottom="@+id/dateAddedRow">
 
                 <Button
                     android:id="@+id/editButton"

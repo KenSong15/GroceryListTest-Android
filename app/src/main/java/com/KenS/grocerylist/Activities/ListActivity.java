@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.KenS.grocerylist.Data.databaseHandler;
@@ -53,6 +54,23 @@ public class ListActivity extends AppCompatActivity {
 
         //Get item from database
         groceryList = dbHandler.getAllGrocery();
+
+        for(Grocery c : groceryList){
+            Grocery grocery = new Grocery();
+            grocery.setName(c.getName());
+            grocery.setQuantity("Qty: "+ c.getQuantity());
+            grocery.setId(c.getId());
+            grocery.setDateItemAdded(("Added on: " + c.getDateItemAdded()));
+
+            listItem.add(grocery);
+        }
+
+        recyclerViewAdapter = new RecyclerViewAdapter(this, listItem);
+
+        Log.d("empty",listItem.toString());
+
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.notifyDataSetChanged();
     }
 
 }

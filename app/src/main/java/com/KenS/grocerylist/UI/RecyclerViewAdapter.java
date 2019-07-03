@@ -1,6 +1,7 @@
 package com.KenS.grocerylist.UI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,10 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.KenS.grocerylist.Activities.DetailActivity;
 import com.KenS.grocerylist.Model.Grocery;
 import com.KenS.grocerylist.R;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -41,9 +41,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             context = ctx;
 
-            groceryItemName = (TextView) view.findViewById(R.id.name);
-            quantity = (TextView) view.findViewById(R.id.quantity);
-            dateAdded = (TextView) view.findViewById(R.id.dateAdded);
+            groceryItemName = (TextView) view.findViewById(R.id.nameRow);
+            quantity = (TextView) view.findViewById(R.id.quantityRow);
+            dateAdded = (TextView) view.findViewById(R.id.dateAddedRow);
 
             editButton = (Button) view.findViewById(R.id.editButton);
             deleteButton = (Button) view.findViewById(R.id.deleteButton);
@@ -54,7 +54,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //go to next screen
+                    //go to next screen to the detail activity
+                    int position = getAdapterPosition();
+
+                    Grocery grocery = groceryList.get(position);
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra("name", grocery.getName());
+                    intent.putExtra("quantity", grocery.getQuantity());
+                    intent.putExtra("id", grocery.getId());
+                    intent.putExtra("date", grocery.getDateItemAdded());
+
+                    context.startActivity(intent);
                 }
             });
 
@@ -97,7 +107,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return 0;
+        return groceryList.size();
     }
 
 
