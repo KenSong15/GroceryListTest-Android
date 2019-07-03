@@ -4,12 +4,12 @@ public class Grocery {
     private String name;
     private String quantity;
     private String dateItemAdded;
-    private String id;
+    private int id;
 
     public Grocery() {
     }
 
-    public Grocery(String name, String quantity, String dateItemAdded, String id) {
+    public Grocery(String name, String quantity, String dateItemAdded, int id) {
         this.name = name;
         this.quantity = quantity;
         this.dateItemAdded = dateItemAdded;
@@ -40,11 +40,11 @@ public class Grocery {
         this.dateItemAdded = dateItemAdded;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }
