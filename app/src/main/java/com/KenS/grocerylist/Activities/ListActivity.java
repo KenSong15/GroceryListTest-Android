@@ -4,12 +4,28 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.KenS.grocerylist.Data.databaseHandler;
+import com.KenS.grocerylist.Model.Grocery;
 import com.KenS.grocerylist.R;
+import com.KenS.grocerylist.UI.RecyclerViewAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private RecyclerViewAdapter recyclerViewAdapter;
+    private List<Grocery> groceryList;
+    private List<Grocery> listItem;
+    private databaseHandler dbHandler;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +42,17 @@ public class ListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        dbHandler = new databaseHandler(this);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewID);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        groceryList = new ArrayList<>();
+        listItem = new ArrayList<>();
+
+        //Get item from database
+        groceryList = dbHandler.getAllGrocery();
     }
 
 }

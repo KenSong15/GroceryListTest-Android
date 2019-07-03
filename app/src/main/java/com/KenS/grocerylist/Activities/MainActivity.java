@@ -1,6 +1,8 @@
 package com.KenS.grocerylist.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -110,6 +112,16 @@ public class MainActivity extends AppCompatActivity {
         Snackbar.make(view, "Item saved!", Snackbar.LENGTH_SHORT).show();
 
         Log.d("item added ID:", String.valueOf(dbHandler.getGroceryCount()));
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+
+                //start a new activity
+                startActivity(new Intent(MainActivity.this, ListActivity.class));
+            }
+        }, 1500); //delay 1.5 seconds
 
     }
 
