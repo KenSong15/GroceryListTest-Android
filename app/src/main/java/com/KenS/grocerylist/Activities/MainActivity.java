@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         groItem = (EditText) findViewById(R.id.groceryItem);
         groQty = (EditText) findViewById(R.id.groceryQty);
-        saveButton = (Button) findViewById(R.id.saveButton);
+        saveButton = (Button) view.findViewById(R.id.saveButton);
 
         dialogBuilder.setView(view);
         dialog = dialogBuilder.create();
