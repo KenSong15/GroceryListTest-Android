@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.KenS.grocerylist.Data.databaseHandler;
+import com.KenS.grocerylist.Model.Grocery;
 import com.KenS.grocerylist.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,11 +24,15 @@ public class MainActivity extends AppCompatActivity {
     private EditText groItem;
     private EditText groQty;
     private Button saveButton;
+    private databaseHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dbHandler = new databaseHandler(this);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -68,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
         dialogBuilder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.alert_popup, null);
 
-        groItem = (EditText) findViewById(R.id.groceryItem);
-        groQty = (EditText) findViewById(R.id.groceryQty);
+        groItem = (EditText) view.findViewById(R.id.groceryItem);
+        groQty = (EditText) view.findViewById(R.id.groceryQty);
         saveButton = (Button) view.findViewById(R.id.saveButton);
 
         dialogBuilder.setView(view);
@@ -79,17 +85,32 @@ public class MainActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Log.d("save to DB","to be implement123");
-                //TODO: save to databese
-                //todo: go to next screen
 
-                saveGroceryToDB(view);
+
+
+                if(!groItem.getText().toString().isEmpty() && !groQty.getText().toString().isEmpty()) {
+                    saveGroceryToDB(view);
+                }
             }
         });
     }
 
     private void saveGroceryToDB(View view) {
-        //Log.d("save to DB","to be implement");
+        Grocery grocery = new Grocery();
+
+        String newGroceryName = groItem.getText().toString();
+        String newGroceryQuantity = groQty.getText().toString();
+
+        grocery.setName(newGroceryName);
+        grocery.setQuantity(newGroceryQuantity);
+
+        //save to DB
+        dbHandler.addGrocery(grocery);
+
+        Snackbar.make(view, "Item saved!", Snackbar.LENGTH_SHORT).show();
+
+        Log.d("item added ID:", String.valueOf(dbHandler.getGroceryCount()));
+
     }
 
 

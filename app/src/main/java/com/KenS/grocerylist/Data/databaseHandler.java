@@ -164,7 +164,4 @@ public class databaseHandler extends SQLiteOpenHelper {
     }
 
 
-
-
-
 }
