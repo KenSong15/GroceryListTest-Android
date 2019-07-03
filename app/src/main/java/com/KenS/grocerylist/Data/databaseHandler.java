@@ -29,7 +29,7 @@ public class databaseHandler extends SQLiteOpenHelper {
         String CREATE_GROCERY_TABLE = "CREATE TABLE " + Constants.TABLE_NAME + "(" +
                 Constants.KEY_ID + " INTEGER PRIMARY KEY," + Constants.KEY_GROCERY_ITEM + " TEXT," +
                 Constants.KEY_QTY_NUMBER + " TEXT," +
-                Constants.KEY_DATE_MADE + "LONG);";
+                Constants.KEY_DATE_NAME + " LONG);";
 
         sqLiteDatabase.execSQL(CREATE_GROCERY_TABLE);
     }
@@ -56,7 +56,7 @@ public class databaseHandler extends SQLiteOpenHelper {
 
         values.put(Constants.KEY_GROCERY_ITEM, grocery.getName());
         values.put(Constants.KEY_QTY_NUMBER, grocery.getQuantity());
-        values.put(Constants.KEY_DATE_MADE, java.lang.System.currentTimeMillis());
+        values.put(Constants.KEY_DATE_NAME, java.lang.System.currentTimeMillis());
 
         //Insert the row
         db.insert(Constants.TABLE_NAME,null,values);
@@ -70,7 +70,7 @@ public class databaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.query(Constants.TABLE_NAME, new String[] {Constants.KEY_ID,
-        Constants.KEY_GROCERY_ITEM, Constants.KEY_QTY_NUMBER, Constants.KEY_DATE_MADE},
+        Constants.KEY_GROCERY_ITEM, Constants.KEY_QTY_NUMBER, Constants.KEY_DATE_NAME},
                 Constants.KEY_ID + "=?",
                 new String[] {String.valueOf(id)}, null, null,null, null);
 
@@ -84,7 +84,7 @@ public class databaseHandler extends SQLiteOpenHelper {
 
             //convert timestamp to something readable
             java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
-            String formatedDate = dateFormat.format(new Date(cursor.getLong(cursor.getColumnIndex(Constants.KEY_DATE_MADE)))
+            String formatedDate = dateFormat.format(new Date(cursor.getLong(cursor.getColumnIndex(Constants.KEY_DATE_NAME)))
             .getTime());
 
             grocery.setDateItemAdded(formatedDate);
@@ -101,7 +101,7 @@ public class databaseHandler extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(Constants.TABLE_NAME, new String[] {
                 Constants.KEY_ID, Constants.KEY_GROCERY_ITEM, Constants.KEY_QTY_NUMBER,
-                Constants.KEY_DATE_MADE}, null,null,null,null,Constants.KEY_DATE_MADE + "DESC");
+                Constants.KEY_DATE_NAME}, null,null,null,null,Constants.KEY_DATE_NAME + "DESC");
 
         if(cursor.moveToFirst()){
             do{
@@ -112,7 +112,7 @@ public class databaseHandler extends SQLiteOpenHelper {
 
                 //convert timestamp to something readable
                 java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
-                String formatedDate = dateFormat.format(new Date(cursor.getLong(cursor.getColumnIndex(Constants.KEY_DATE_MADE)))
+                String formatedDate = dateFormat.format(new Date(cursor.getLong(cursor.getColumnIndex(Constants.KEY_DATE_NAME)))
                         .getTime());
                 grocery.setDateItemAdded(formatedDate);
 
@@ -134,7 +134,7 @@ public class databaseHandler extends SQLiteOpenHelper {
 
         values.put(Constants.KEY_GROCERY_ITEM, grocery.getName());
         values.put(Constants.KEY_QTY_NUMBER, grocery.getQuantity());
-        values.put(Constants.KEY_DATE_MADE, java.lang.System.currentTimeMillis());
+        values.put(Constants.KEY_DATE_NAME, java.lang.System.currentTimeMillis());
 
         //update row
         return db.update(Constants.TABLE_NAME, values, Constants.KEY_ID + "=?", new String[] {String.valueOf(grocery.getId())});
