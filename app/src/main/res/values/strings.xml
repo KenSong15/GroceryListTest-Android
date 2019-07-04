@@ -11,4 +11,7 @@
     <string name="exampleQuantity">ExampleQuantity</string>
     <string name="exampleDate">Date: (example)</string>
     <string name="exampleDetail">Example Detail</string>
+    <string name="sure_text">Are You Sure?</string>
+    <string name="no_text">No</string>
+    <string name="yes_text">Yes</string>
 </resources>

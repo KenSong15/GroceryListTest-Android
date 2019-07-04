@@ -84,6 +84,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
 
         }
+
+        public void deleteItem(int id){
+
+        }
+
+        public void editItem(){
+
+        }
+
     }
 
     @Override

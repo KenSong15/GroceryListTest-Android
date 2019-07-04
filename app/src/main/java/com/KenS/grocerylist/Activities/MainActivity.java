@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         dbHandler = new databaseHandler(this);
 
+        byPassActivity();//bypass on the right the way
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -125,6 +127,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    public void byPassActivity(){
+        //check if the database is empty, if not we can bypass the add activity
+        if(dbHandler.getGroceryCount() > 0){
+            startActivity(new Intent(MainActivity.this, ListActivity.class));
+            finish();
+        }
+    }
 
 }
