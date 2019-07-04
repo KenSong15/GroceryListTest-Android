@@ -90,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
                 if(!groItem.getText().toString().isEmpty() && !groQty.getText().toString().isEmpty()) {
                     saveGroceryToDB(view);
                 }
